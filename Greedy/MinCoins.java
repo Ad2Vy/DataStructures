@@ -11,6 +11,8 @@ public class MinCoins {
                 System.out.println("coins of "+arr[i]+" are : "+coin);
                 count+=coin;
             }
+            if(N==0)
+                break;
         }
 
         return count;
