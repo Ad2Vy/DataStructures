@@ -20,7 +20,6 @@ public class FractionalKnapsack {
         }
         return count;
     }
-
     public static void main(String[] args) {
         weights[]  arr= {new weights(50,600),new weights(20,500),new weights(30,400)};
         System.out.println(knapsack(arr,70));

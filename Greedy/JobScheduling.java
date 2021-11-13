@@ -4,11 +4,20 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class JobScheduling {
+    static class cmp implements Comparator<jobs>{
+
+        @Override
+        public int compare(jobs o1, jobs o2) {
+            return o2.profit - o1.profit;
+        }
+    }
 
     // 1    4   1   1
     // 100  40  60  50
+
     public static int maxProfit(jobs[] arr,int n){
         int res=0;
+        //SOrt the array according to the profit
         Arrays.sort(arr,new cmp());
 
         // To store result (Sequence of jobs)
@@ -17,6 +26,7 @@ public class JobScheduling {
         boolean slot[] = new boolean[n];
         Arrays.fill(slot,false);
 
+        //17 4921
         for(int i=0; i<arr.length;i++){
             // getting current deadline
             int current=arr[i].getDeadline()-1;
@@ -51,6 +61,30 @@ public class JobScheduling {
         return res;
     }
 
+    public static int jobSch(jobs[] job,int n){
+        int res=0;
+        Arrays.sort(job,new cmp());
+        //Array sorted in descending order of profit
+        boolean[] slot=new boolean[50];
+        //max profit assigned to the slot available
+        for(int i=0;i<n;i++){
+            int current = job[i].getDeadline()-1;
+
+            int cur=current;
+            while(cur>=0 && slot[cur]){
+                cur--;
+            }
+            if(cur<0){
+                continue;
+            }
+            if(!slot[cur]){
+                slot[cur]=true;
+                res+=job[i].getProfit();
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         jobs[] arr={
                 new jobs(4,70),
@@ -60,19 +94,10 @@ public class JobScheduling {
         };
         int n=4;
         System.out.println(maxProfit(arr,n));
+        System.out.println(jobSch(arr,n));
     }
 
 }
-class cmp implements Comparator<jobs>{
-
-    @Override
-    public int compare(jobs o1, jobs o2) {
-        return o2.profit - o1.profit;
-    }
-}
-
-
-
 
 
 class jobs{
