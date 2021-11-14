@@ -15,9 +15,11 @@ public class SubString {
             return;
         }
         for(int i=l;i<=r;i++){
-            str= new String(swap(str,i,l));
-            permute(str,l+1,r);
-            str=new String(swap(str,i,l));
+            if(isSafe(str,l,i,r)) {
+                str = new String(swap(str, i, l));
+                permute(str, l + 1, r);
+                str = new String(swap(str, i, l));
+            }
         }
     }
     public static char[] swap(String str, int l, int r){
@@ -28,7 +30,9 @@ public class SubString {
         return ch;
     }
 
-    boolean isSafe(String str, int l , int i, int r){
+
+//    boolean isSafe function to prevent recursion for the specific case. Here sub string
+    static boolean isSafe(String str, int l , int i, int r){
         if(l!=0 && str.charAt(l-1)=='A' && str.charAt(i)=='B'){
             return false;
         }
