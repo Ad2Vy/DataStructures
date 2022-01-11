@@ -18,7 +18,7 @@ public class ropeCuttingProblem {
     }
 
     public static void main(String[] args) {
-        int N=23,a=11,b=9,c=12;
+        int N=24,a=10,b=2,c=12;
         System.out.println(cutRope(N,a,b,c));
     }
 }
