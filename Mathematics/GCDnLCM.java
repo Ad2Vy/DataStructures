@@ -11,7 +11,8 @@ public class GCDnLCM {
             return a;
         return divisor(b,a%b);
     }
-    public static int lcm(int a, int b){
+    public static int lcm(int a, int b)
+    {
         return (a * b) / divisor(a, b);
     }
 }
