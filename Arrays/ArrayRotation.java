@@ -18,6 +18,19 @@ public class ArrayRotation {
 
     }
 
+    static void rotate(int[] arr, int d){
+        int[] temp=new int[d];
+        for(int i=0;i<d;i++){
+            temp[i]=arr[i];
+        }
+        for(int i=0;i+d<arr.length;i++){
+            arr[i]=arr[i+d];
+        }
+        for(int i=0;i<d;i++){
+            arr[arr.length-d+i]=temp[i];
+        }
+    }
+
 
     //Reverse function to reverse elements of Array
     public static void reverse(int[] arr,int l,int h){
@@ -38,8 +51,10 @@ public class ArrayRotation {
 
     public static void main(String[] args) {
         int[] arr={1,2,3,4,5,6};
-        rightRotate(arr,2);
+//        rightRotate(arr,2);
+        rotate(arr,4);
         for(int x:arr){
+
             System.out.print(x+" ");
         }
     }
