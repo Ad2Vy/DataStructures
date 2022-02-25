@@ -1,5 +1,7 @@
 package Arrays;
 
+// using two loops for the same iterator can be useful
+
 public class FrequencyInSortedArray {
     static void freq(int[] arr){
         int freq=1,i=1;
