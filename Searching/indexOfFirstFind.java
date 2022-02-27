@@ -14,12 +14,12 @@ public class indexOfFirstFind {
         while(low<=high) {
             int mid = (low + high) / 2;
             if (arr[mid] == num) {
-                if (mid!=0&&arr[mid - 1] == num) {
+                if (mid!=0&& arr[mid - 1] == num) {
                     high = mid - 1;
                 }
-             else
-                return mid;
-        }
+                else
+                    return mid;
+            }
             else if(arr[mid]>num){
                 high=mid-1;
             }
