@@ -2,6 +2,7 @@ package Searching;
 
 
 import java.util.Arrays;
+// make a visited array for repeating elements
 
 public class RepeatingElements {
     static int repeat(int[] arr){
