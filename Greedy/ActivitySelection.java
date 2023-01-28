@@ -8,9 +8,11 @@ public class ActivitySelection {
     public static int maxActivity(pair[] arr){
         int count=0;
         Arrays.sort(arr,new MyCmp());
+        pair prev=arr[0];
         for(int i=1;i<arr.length;i++){
-            if(arr[i].getStartTime()<arr[i-1].getEndTime()){
+            if(arr[i].getStartTime()>=prev.getEndTime()){
                 count++;
+                prev=arr[i];
             }
         }
 
