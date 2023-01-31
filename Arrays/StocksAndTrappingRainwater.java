@@ -16,6 +16,9 @@ public class StocksAndTrappingRainwater {
         return res;
     }
 
+
+
+
     //trapping rainwater
     static int trapRainwater(int[] arr){
         int res=0,left=arr[0],right=arr[arr.length-1];
@@ -36,11 +39,38 @@ public class StocksAndTrappingRainwater {
 
     }
 
+    static int trapRainwaterSpaceOptimized(int[] arr){
+        int low=0,high=arr.length-1,left_max=0,right_max=0;
+        int result=0;
+        while(low<=high){
+            if(arr[low]<arr[high]){
+                if(arr[low]>left_max){
+                    left_max=arr[low];
+                }
+                else{
+                    result+= left_max- arr[low];
+                }
+                low++;
+            }
+            else{
+                if(arr[high]>right_max){
+                    right_max=arr[high];
+                }
+                else{
+                    result+= right_max-arr[high];
+                }
+                high--;
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
 //        int[] stocks={1,5,3,8,12};
 //        System.out.println(stocksProfit(stocks));
         int[] water={2,1,2,5,4};
         System.out.println(trapRainwater(water));
+        System.out.println(trapRainwaterSpaceOptimized(water));
 
     }
 }
