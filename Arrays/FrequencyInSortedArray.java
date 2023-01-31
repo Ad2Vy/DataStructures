@@ -17,9 +17,23 @@ public class FrequencyInSortedArray {
 
     }
 
+    static void frequency(int[] arr){
+        int freq=1;
+        for(int i=1;i<arr.length;i++){
+
+            if(arr[i]==arr[i-1]){
+                freq++;
+            }
+            else{
+                System.out.println("freq of "+arr[i-1]+" is "+freq);freq=1;
+            }
+        }
+        System.out.println("freq of "+arr[arr.length-1]+" is "+freq);
+    }
+
     public static void main(String[] args) {
         int[] arr={1,1,1,2,2,2,3,3,3,4,4,4,4,4,4};
-        freq(arr);
-
+//        freq(arr);
+        frequency(arr);
     }
 }
