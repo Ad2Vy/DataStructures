@@ -3,6 +3,8 @@ package Arrays;
 public class MaxCircularSubArraySum {
 
     //Naive approach
+    //check for every possible subarray and find the max sum
+    //idea is to use two loops inner one should have index=(i+j) %n
     // {4,-2,5,3}
     static int maxCircular(int[] arr){
         int max=arr[0];
@@ -20,30 +22,61 @@ public class MaxCircularSubArraySum {
     }
 
     //Efficient approach
-    // find the minimum sub array sum and subtract it from array sum to get max circular sub array sum
-    static int normalSub(int[] arr){
+    // find the maxSubArraySum using kadane's
+    // Also find minSubArraySum by implementing kadane on inverted array.
+    // return max of max and total-min;
+    static int kadane(int[] arr){
         int max=arr[0];
         int cur=arr[0];
         for(int i=1;i<arr.length;i++){
-            cur=Math.max(cur+arr[i],arr[i]);
-            max=Math.max(max,cur);
+            cur=Math.min(cur+arr[i],arr[i]);
+            max=Math.min(max,cur);
         }
         return max;
     }
 
     static int overAllSub(int[] arr){
-        int normal_sum=normalSub(arr);
-        if(normal_sum<0){
-            return normal_sum;
+        int min=kadane(arr);
+        if(min<0){
+            return min;
         }
         int arr_sum=0;
         for(int i=0;i<arr.length;i++){
             arr_sum+=arr[i];
             arr[i]=-arr[i];
         }
-        int over_all_sum= arr_sum + normalSub(arr);
-        return Math.max(over_all_sum,normal_sum);
+        int over_all_sum= arr_sum + min;
+        return Math.max(over_all_sum,min);
 
+    }
+    //The above two methods are part of one solution. and their optimization is below in one method.
+
+    static int reverseKadane(int[] arr){
+        //corner case
+        if(arr.length==1){
+            return arr[0];
+        }
+        //declaring variables
+        int curMax=arr[0],curMin=arr[0],
+                min=arr[0],max=arr[0];
+        int total=0;total+=arr[0];
+
+        for(int i=1;i<arr.length-1;i++){
+            //maxSubArraySum
+            curMax=Math.max(curMax+arr[i],arr[i]);
+            max=Math.max(curMax,max);
+
+            //minSubArraySum
+            curMin=Math.min(curMin+arr[i],arr[i]);
+            min=Math.min(curMin,min);
+            //incrementing total
+            total+=arr[i];
+        }
+        //if All negative then return max.
+        if(total==min){
+            return max;
+        }
+        return Math.max(max,total-min);
     }
 
     public static void main(String[] args) {

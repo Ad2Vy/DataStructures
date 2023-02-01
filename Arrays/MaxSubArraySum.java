@@ -10,7 +10,7 @@ public class MaxSubArraySum {
         return max;
     }
 
-    static int longest(int[] arr){
+    static int longestEvenOdd(int[] arr){
         //Brute force
 //        int max=0,count=1;
 //        for(int i=0;i<arr.length;i++){
@@ -43,11 +43,11 @@ public class MaxSubArraySum {
     }
 
     public static void main(String[] args) {
-//        int[] arr={2,3,-8,7,-1,2,3};
-//        System.out.println(maxSum(arr));
+        int[] arr={-2,0,-8,-1,-1,2,3};
+        System.out.println(maxSum(arr));
 
-        int[] arr={0,1,2,3,3,4,5,5,6,7,8};
-        System.out.println(longest(arr));
+//        int[] ar={0,1,2,3,3,4,5,5,6,7,8};
+//        System.out.println(longestEvenOdd(ar));
 
     }
 }
