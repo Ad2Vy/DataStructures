@@ -32,11 +32,34 @@ public class RepeatingElements {
         return slow;
     }
 
+    //Repeating elements no O(1) space and O(N);
+    static int findRepeat(int[] a){
+        for(int i=0;i<a.length;i++){
+            int m=i;int j=a[i];
+            if(a[a[i]]==a[i]){
+                if(a[i]==i){
+                    continue;
+                }
+                else
+                    return a[i];
+            }
+            else{
+
+                int temp=a[m];
+                a[m]=a[j];
+                a[j]=temp;
+            }
+
+        }
+        return -1;
+    }
+
 
     public static void main(String[] args) {
-        int[] arr={1,2,3,2,0};
-        System.out.println(repeat(arr));
-        System.out.println(repeatEle(arr));
+        int[] arr={0,1,3,2,2};
+//        System.out.println(repeat(arr));
+//        System.out.println(repeatEle(arr));
+        System.out.println(findRepeat(arr));
     }
 
 }
