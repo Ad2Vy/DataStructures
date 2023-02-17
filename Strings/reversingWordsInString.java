@@ -28,7 +28,7 @@ public class reversingWordsInString {
     }
 
     public static void main(String[] args) {
-        String s="Burdened Glorious purpose";
+        String s="BurdenedGloriouspurpose";
 
         System.out.println(reverseWords(s));
     }
