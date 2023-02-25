@@ -3,7 +3,7 @@ package Graphs;
 import java.util.ArrayList;
 
 public class CycleDetectionInUndirectedGraph {
-    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+    public static boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         boolean[] visited=new boolean[V];
         // if not visited check for it's adjacents
@@ -21,7 +21,7 @@ public class CycleDetectionInUndirectedGraph {
     }
     //
 
-    boolean DFS(int s,ArrayList<ArrayList<Integer>> adj,boolean[] visited,int parent){
+    static boolean DFS(int s,ArrayList<ArrayList<Integer>> adj,boolean[] visited,int parent){
 
         visited[s]=true;
 
@@ -36,5 +36,16 @@ public class CycleDetectionInUndirectedGraph {
         }
         return false;
 
+    }
+
+    public static void main(String[] args) {
+        UndirectedGraph graph=new UndirectedGraph(5);
+        graph.addEdge(0,1);
+        graph.addEdge(1,2);
+        graph.addEdge(2,3);
+        graph.addEdge(3,4);
+        graph.addEdge(4,1);
+
+        if(isCycle(5, graph.adj)) System.out.println("Cycle Detected");;
     }
 }
