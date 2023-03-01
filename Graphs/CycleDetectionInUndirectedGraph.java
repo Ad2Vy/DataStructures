@@ -6,7 +6,7 @@ public class CycleDetectionInUndirectedGraph {
     public static boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         boolean[] visited=new boolean[V];
-        // if not visited check for it's adjacents
+        // if not visited check for it's adjacent
         // if DFS includes an element that is already visited except for the parent
         // we will say that this has a cycle and will return true;
         for(int i=0;i<adj.size();i++){
